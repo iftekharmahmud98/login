@@ -8,5 +8,5 @@ class ColorUtils {
   static const Color themeGradientStart = Color(0xFF8E24AA);
   static const Color themeGradientEnd = Color(0xFFFB8C00);
   static const LinearGradient appBarGradient =
-      LinearGradient(colors: [themeGradientStart, themeGradientEnd]);
+  LinearGradient(colors: [themeGradientStart, themeGradientEnd]);
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,8 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   Text(
                     "Iftekhar",
-                    style: Theme.of(context)
+                    style: Theme
+                        .of(context)
                         .textTheme
                         .headline6
                         ?.copyWith(fontWeight: FontWeight.bold),
@@ -57,7 +58,7 @@ class ProfilePage extends StatelessWidget {
 }
 
 class _ProfileInfoRow extends StatelessWidget {
-  const _ProfileInfoRow({Key? key}) : super(key: key);
+  const _ProfileInfoRow({Key key}) : super(key: key);
 
   final List<ProfileInfoItem> _items = const [
     ProfileInfoItem("Posts", 900),
@@ -73,8 +74,9 @@ class _ProfileInfoRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: _items
-            .map((item) => Expanded(
-                    child: Row(
+            .map((item) =>
+            Expanded(
+                child: Row(
                   children: [
                     if (_items.indexOf(item) != 0) const VerticalDivider(),
                     Expanded(child: _singleItem(context, item)),
@@ -85,7 +87,8 @@ class _ProfileInfoRow extends StatelessWidget {
     );
   }
 
-  Widget _singleItem(BuildContext context, ProfileInfoItem item) => Column(
+  Widget _singleItem(BuildContext context, ProfileInfoItem item) =>
+      Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
@@ -100,7 +103,10 @@ class _ProfileInfoRow extends StatelessWidget {
           ),
           Text(
             item.title,
-            style: Theme.of(context).textTheme.caption,
+            style: Theme
+                .of(context)
+                .textTheme
+                .caption,
           )
         ],
       );
@@ -109,11 +115,12 @@ class _ProfileInfoRow extends StatelessWidget {
 class ProfileInfoItem {
   final String title;
   final int value;
+
   const ProfileInfoItem(this.title, this.value);
 }
 
 class _TopPortion extends StatelessWidget {
-  const _TopPortion({Key? key}) : super(key: key);
+  const _TopPortion({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +162,9 @@ class _TopPortion extends StatelessWidget {
                   right: 0,
                   child: CircleAvatar(
                     radius: 20,
-                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                    backgroundColor: Theme
+                        .of(context)
+                        .scaffoldBackgroundColor,
                     child: Container(
                       margin: const EdgeInsets.all(8.0),
                       decoration: const BoxDecoration(

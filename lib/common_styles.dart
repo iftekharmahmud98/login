@@ -5,7 +5,7 @@ class CommonStyles {
     return InputDecoration(
       labelText: label,
       hintText: hint,
-      alignLabelWithHint:true,
+      alignLabelWithHint: true,
       contentPadding: const EdgeInsets.symmetric(vertical: 5),
       labelStyle: const TextStyle(color: Colors.black),
       enabledBorder: const UnderlineInputBorder(
@@ -15,8 +15,8 @@ class CommonStyles {
       ),
       focusedBorder: const UnderlineInputBorder(
         borderSide: BorderSide(
-          color: Colors.black,
-          width: 2
+            color: Colors.black,
+            width: 2
         ),
       ),
     );

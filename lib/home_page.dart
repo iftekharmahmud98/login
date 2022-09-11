@@ -3,13 +3,16 @@ import 'profile_page.dart';
 import 'body_page.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  HomePage({Key key}) : super(key: key);
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final width = MediaQuery
+        .of(context)
+        .size
+        .width;
     final bool isLargeScreen = width > 800;
 
     return Theme(
@@ -23,9 +26,9 @@ class HomePage extends StatelessWidget {
           leading: isLargeScreen
               ? null
               : IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () => _scaffoldKey.currentState?.openDrawer(),
-                ),
+            icon: const Icon(Icons.menu),
+            onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+          ),
           title: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
@@ -49,10 +52,10 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => const ProfilePage()),
-                        );  
+                        );
                       },
                       icon: const Icon(Icons.person))
-                  ),
+              ),
             )
           ],
         ),
@@ -62,25 +65,29 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _drawer() => Drawer(
+  Widget _drawer() =>
+      Drawer(
         child: ListView(
           children: _menuItems
-              .map((item) => ListTile(
-                    onTap: () {
-                      _scaffoldKey.currentState?.openEndDrawer();
-                    },
-                    title: Text(item),
-                  ))
+              .map((item) =>
+              ListTile(
+                onTap: () {
+                  _scaffoldKey.currentState?.openEndDrawer();
+                },
+                title: Text(item),
+              ))
               .toList(),
         ),
       );
 
-  Widget _navBarItems() => Row(
+  Widget _navBarItems() =>
+      Row(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: _menuItems
             .map(
-              (item) => InkWell(
+              (item) =>
+              InkWell(
                 onTap: () {},
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -91,7 +98,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+        )
             .toList(),
       );
 }

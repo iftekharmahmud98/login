@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NewsFeedPage extends StatelessWidget {
-  const NewsFeedPage({Key? key}) : super(key: key);
+  const NewsFeedPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,31 +35,37 @@ class NewsFeedPage extends StatelessWidget {
                             children: [
                               Expanded(
                                   child: RichText(
-                                overflow: TextOverflow.ellipsis,
-                                text: TextSpan(children: [
-                                  TextSpan(
-                                    text: _item.user.fullName,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.black),
-                                  ),
-                                  TextSpan(
-                                    text: " @${_item.user.userName}",
-                                    style:
-                                        Theme.of(context).textTheme.subtitle1,
-                                  ),
-                                ]),
-                              )),
+                                    overflow: TextOverflow.ellipsis,
+                                    text: TextSpan(children: [
+                                      TextSpan(
+                                        text: _item.user.fullName,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                            color: Colors.black),
+                                      ),
+                                      TextSpan(
+                                        text: " @${_item.user.userName}",
+                                        style:
+                                        Theme
+                                            .of(context)
+                                            .textTheme
+                                            .subtitle1,
+                                      ),
+                                    ]),
+                                  )),
                               Text('· 5m',
-                                  style: Theme.of(context).textTheme.subtitle1),
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .subtitle1),
                               const Padding(
                                 padding: EdgeInsets.only(left: 8.0),
                                 child: Icon(Icons.more_horiz),
                               )
                             ],
                           ),
-                          if (_item.content != null) Text(_item.content!),
+                          if (_item.content != null) Text(_item.content),
                           if (_item.imageUrl != null)
                             Container(
                               height: 200,
@@ -68,7 +74,7 @@ class NewsFeedPage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(8.0),
                                   image: DecorationImage(
                                     fit: BoxFit.cover,
-                                    image: NetworkImage(_item.imageUrl!),
+                                    image: NetworkImage(_item.imageUrl),
                                   )),
                             ),
                           _ActionsRow(item: _item)
@@ -88,7 +94,8 @@ class NewsFeedPage extends StatelessWidget {
 
 class _AvatarImage extends StatelessWidget {
   final String url;
-  const _AvatarImage(this.url, {Key? key}) : super(key: key);
+
+  const _AvatarImage(this.url, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +111,8 @@ class _AvatarImage extends StatelessWidget {
 
 class _ActionsRow extends StatelessWidget {
   final FeedItem item;
-  const _ActionsRow({Key? key, required this.item}) : super(key: key);
+
+  const _ActionsRow({Key key, this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -113,8 +121,8 @@ class _ActionsRow extends StatelessWidget {
           iconTheme: const IconThemeData(color: Colors.grey, size: 18),
           textButtonTheme: TextButtonThemeData(
               style: ButtonStyle(
-            foregroundColor: MaterialStateProperty.all(Colors.grey),
-          ))),
+                foregroundColor: MaterialStateProperty.all(Colors.grey),
+              ))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -146,20 +154,19 @@ class _ActionsRow extends StatelessWidget {
 }
 
 class FeedItem {
-  final String? content;
-  final String? imageUrl;
+  final String content;
+  final String imageUrl;
   final User user;
   final int commentsCount;
   final int likesCount;
   final int retweetsCount;
 
-  FeedItem(
-      {this.content,
-      this.imageUrl,
-      required this.user,
-      this.commentsCount = 0,
-      this.likesCount = 0,
-      this.retweetsCount = 0});
+  FeedItem({this.content,
+    this.imageUrl,
+    this.user,
+    this.commentsCount = 0,
+    this.likesCount = 0,
+    this.retweetsCount = 0});
 }
 
 class User {
@@ -167,11 +174,9 @@ class User {
   final String imageUrl;
   final String userName;
 
-  User(
-    this.fullName,
-    this.userName,
-    this.imageUrl,
-  );
+  User(this.fullName,
+      this.userName,
+      this.imageUrl,);
 }
 
 final List<User> _users = [
@@ -200,7 +205,7 @@ final List<User> _users = [
 final List<FeedItem> _feedItems = [
   FeedItem(
     content:
-        "A son asked his father (a programmer) why the sun rises in the east, and sets in the west. His response? It works, don’t touch!",
+    "A son asked his father (a programmer) why the sun rises in the east, and sets in the west. His response? It works, don’t touch!",
     user: _users[0],
     imageUrl: "https://picsum.photos/id/1000/960/540",
     likesCount: 100,
@@ -215,14 +220,14 @@ final List<FeedItem> _feedItems = [
   FeedItem(
       user: _users[0],
       content:
-          "How many programmers does it take to change a light bulb? None, that’s a hardware problem.",
+      "How many programmers does it take to change a light bulb? None, that’s a hardware problem.",
       likesCount: 50,
       commentsCount: 22,
       retweetsCount: 30),
   FeedItem(
       user: _users[1],
       content:
-          "Programming today is a race between software engineers striving to build bigger and better idiot-proof programs, and the Universe trying to produce bigger and better idiots. So far, the Universe is winning.",
+      "Programming today is a race between software engineers striving to build bigger and better idiot-proof programs, and the Universe trying to produce bigger and better idiots. So far, the Universe is winning.",
       imageUrl: "https://picsum.photos/id/1002/960/540",
       likesCount: 500,
       commentsCount: 202,

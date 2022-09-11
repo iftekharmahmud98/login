@@ -8,11 +8,11 @@ class RaisedGradientButton extends StatelessWidget {
   final Function onPressed;
 
   const RaisedGradientButton({
-    Key? key,
-    required this.child,
+    Key key,
+    this.child,
     this.width = double.infinity,
     this.height = 40.0,
-    required this.onPressed, required RoundedRectangleBorder shape,
+    this.onPressed, RoundedRectangleBorder shape,
   }) : super(key: key);
 
   @override
